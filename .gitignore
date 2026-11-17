@@ -1,0 +1,6 @@
+target/
+node_modules/
+js/node_modules/
+ui/backend.js
+src-tauri/gen/
+*.log

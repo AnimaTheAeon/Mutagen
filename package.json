@@ -1,0 +1,13 @@
+{
+  "name": "mutagen",
+  "private": true,
+  "version": "1.1.0",
+  "description": "Mutagen — save editor for TMNT: Splintered Fate (Tauri)",
+  "scripts": {
+    "bundle": "node js/build.js",
+    "tauri": "tauri",
+    "test": "node --test test/unit.test.js",
+    "test:saves": "node --test test/core.test.js"
+  },
+  "devDependencies": { "@tauri-apps/cli": "^2" }
+}

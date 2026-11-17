@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Mutagen's window may only call its own commands.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

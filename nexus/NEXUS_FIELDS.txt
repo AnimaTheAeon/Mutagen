@@ -1,0 +1,44 @@
+=== Nexus Mods upload fields for Mutagen ===
+
+MOD NAME
+Mutagen - Save Editor
+
+SUMMARY (brief overview, under 350 characters)
+Save editor for TMNT: Splintered Fate. Change Dragon/Dreamer coins and materials, swap your hero mid-run (drag and drop), add or level powers, max upgrades and artifacts, and tweak hero stats. Backs up and checks your save on every change. Portable, about 5 MB.
+
+CATEGORY
+Utilities  (or "Tools" if that's what Splintered Fate's Nexus page offers)
+
+VERSION
+1.1.1
+
+SUGGESTED TAGS
+Utilities, Save Editor, Tools, Cheats, Quality of Life, Gameplay
+
+FILES TAB
+Main file:      upload/Mutagen-1.1.1.zip                (Mutagen.exe + README)
+Optional file:  upload/Mutagen_1.1.1_x64-setup.exe      (installer with Start menu shortcut)
+  Optional file description: Same app as the main file, but installs it with a Start menu shortcut and an uninstaller.
+
+IMAGES
+Header image:   Mutagen_Header_1920x480.png
+Main image:     Mutagen_TitleCard_1920x1080.png  (set as the primary image / thumbnail)
+Gallery, in this order, with captions:
+  01  Coins, materials, talismans and wraps at a glance
+  02  Your current run: powers, Scrap, Lucky Dice and revives
+  03  Swap heroes mid-run: drag a portrait onto Current character and see exactly what changes
+  04  Add any power, tool or hero-only power
+  05  Every shop upgrade and artifact. Click a bar to set the level
+  06  Every save is checked, backed up and verified
+  07  Backups & safety: restore any of the last 25 backups in one click
+  08  Editing game files shows a clear warning first
+  09  Advanced: hero base HP, speed, size and dash cooldown
+
+DESCRIPTION
+Paste NEXUS_DESCRIPTION_BBCODE.txt into the description box (BBCode mode).
+
+REQUIREMENTS
+None (Windows 10/11 with WebView2, which comes with Windows).
+
+PERMISSIONS (suggestion)
+Source is public on GitHub. Ask before re-uploading; forks welcome on GitHub.

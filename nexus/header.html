@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+body { width: 1920px; height: 480px; position: relative; }
+.strip { position: absolute; top: -40px; height: 560px; display: flex; gap: 28px; opacity: .33; filter: saturate(.85); transform: rotate(-4deg); }
+.strip img { height: 100%; border-radius: 16px; box-shadow: 0 0 0 1px rgba(255,255,255,.07); }
+.veil { position: absolute; inset: 0; background: radial-gradient(ellipse 760px 300px at 50% 50%, rgba(11,13,16,.97) 30%, rgba(11,13,16,.78) 62%, rgba(11,13,16,.35) 100%); }
+.edge { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,13,16,.55), rgba(11,13,16,0) 30%, rgba(11,13,16,0) 70%, rgba(11,13,16,.75)); }
+.center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 42px; }
+.icon { width: 230px; height: 230px; filter: drop-shadow(0 16px 36px rgba(0,0,0,.75)) drop-shadow(0 0 40px rgba(155,225,93,.2)); }
+.word { font-size: 150px; }
+.tag { font: 800 40px "Inter Display", Inter; margin-top: 14px; }
+.sub { font: 600 22px Inter; color: #9DA7B2; margin-top: 12px; letter-spacing: 2.5px; text-transform: uppercase; }
+</style></head><body>
+<div class="strip" style="left:-120px"><img src="02_run.png"><img src="05_upgrades.png"><img src="01_overview.png"></div>
+<div class="hex"></div>
+<div class="veil"></div><div class="edge"></div>
+<div class="center">
+  <img class="icon" src="icon.png">
+  <div><div class="word">MUTAGEN</div><div class="tag lime">Mutate your save.</div><div class="sub">Save editor for TMNT: Splintered Fate</div></div>
+</div>
+</body></html>

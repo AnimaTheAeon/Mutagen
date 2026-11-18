@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+body { width: 1920px; height: 1080px; position: relative; }
+.left { position: absolute; left: 110px; top: 0; bottom: 0; width: 760px; display: flex; flex-direction: column; justify-content: center; z-index: 5; }
+.icon { width: 250px; height: 250px; filter: drop-shadow(0 18px 40px rgba(0,0,0,.7)) drop-shadow(0 0 50px rgba(155,225,93,.18)); margin-bottom: 34px; margin-left: -10px; }
+.word { font-size: 168px; }
+.tag { font: 800 46px "Inter Display", Inter; margin-top: 18px; letter-spacing: -.5px; }
+.sub { font: 500 27px Inter; color: #A7B0BB; margin-top: 18px; }
+.feats { list-style: none; margin-top: 44px; display: grid; gap: 16px; }
+.feats li { font: 600 27px Inter; color: #DDE3E9; display: flex; align-items: center; gap: 16px; }
+.feats li::before { content: ""; width: 30px; height: 30px; flex: 0 0 30px; border-radius: 9px; background: #9BE15D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='%230E1013' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat; }
+.chips { display: flex; gap: 12px; margin-top: 46px; }
+.chip { font: 700 20px Inter; padding: 11px 18px; border-radius: 999px; border: 1.5px solid #2E3A2A; background: #141A12; color: #BFE59A; }
+.stage { position: absolute; left: 930px; top: 0; right: 0; bottom: 0; perspective: 2200px; }
+.s1 { width: 1180px; left: 130px; top: 250px; transform: rotateY(-16deg) rotateX(4deg); transform-origin: left center; z-index: 3; }
+.s2 { width: 980px; left: 20px; top: 60px; transform: rotateY(-16deg) rotateX(4deg); transform-origin: left center; opacity: .55; filter: saturate(.8); z-index: 1; }
+.fadeR { position: absolute; top: 0; right: 0; bottom: 0; width: 260px; background: linear-gradient(90deg, rgba(11,13,16,0), #0B0D10 85%); z-index: 4; }
+.fadeB { position: absolute; left: 0; right: 0; bottom: 0; height: 200px; background: linear-gradient(180deg, rgba(11,13,16,0), #0B0D10 90%); z-index: 4; }
+.game { position: absolute; left: 110px; top: 70px; font: 800 20px Inter; letter-spacing: 3px; text-transform: uppercase; color: #6F7A86; z-index: 5; }
+.game b { color: #9BE15D; }
+</style></head><body>
+<div class="hex"></div>
+<div class="glow" style="left:-160px;top:180px;width:820px;height:820px;background:rgba(155,225,93,.13)"></div>
+<div class="glow" style="right:-200px;top:-120px;width:900px;height:700px;background:rgba(80,120,255,.08)"></div>
+<div class="game">TMNT: Splintered Fate <b>·</b> Save editor <b>·</b> Windows</div>
+<div class="left">
+  <img class="icon" src="icon.png">
+  <div class="word">MUTAGEN</div>
+  <div class="tag lime">Mutate your save.</div>
+  <ul class="feats">
+    <li>Coins, materials, talismans &amp; wraps</li>
+    <li>Swap the hero in your current run</li>
+    <li>Run powers, upgrades &amp; artifacts</li>
+    <li>Hero stats &amp; power values (advanced)</li>
+  </ul>
+  <div class="chips"><span class="chip">Backup on every save</span><span class="chip">Checksum-verified</span><span class="chip">~5 MB</span></div>
+</div>
+<div class="stage">
+  <div class="shot s2"><img src="03_swap_plan.png"></div>
+  <div class="shot s1"><img src="01_overview.png"></div>
+</div>
+<div class="fadeR"></div><div class="fadeB"></div>
+</body></html>

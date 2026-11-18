@@ -1,0 +1,90 @@
+[center][size=6][b]MUTAGEN[/b][/size]
+[size=4][color=#9BE15D][b]Mutate your save.[/b][/color][/size]
+[size=4]A save editor for TMNT: Splintered Fate. Change coins, swap your hero mid-run, max your upgrades, and more.[/size]
+[size=3]Version 1.1.1 · Windows 10/11 · about 5 MB[/size][/center]
+
+[line]
+
+[size=5][b]What is this?[/b][/size]
+Mutagen is a small app that opens your Splintered Fate save and lets you change what's inside it, with buttons instead of hex editors. It finds your save by itself, and it [b]backs it up before every change[/b].
+
+[line]
+
+[size=5][color=#9BE15D][b]What you can change[/b][/color][/size]
+
+[size=4][b]Coins and materials[/b][/size]
+[list]
+[*][b]Dragon Coins[/b] and [b]Dreamer Coins[/b]. Type a number or use the − / + buttons (there are +1,000 and +10,000 buttons too).
+[*][b]Karai's Pauldrons, Shredder's Blades, Astral Hearts[/b] and [b]Gauntlet Medallions[/b]
+[*][b]Talismans[/b] and [b]Astral Wraps[/b] for every hero
+[/list]
+
+[size=4][b]Your current run[/b][/size]
+[list]
+[*][b]Swap your hero mid-run.[/b] Drag a hero's portrait onto [i]Current character[/i] (or just click it). Your powers, Scrap and room stay the same. Mutagen also switches the hero-only stuff (starting tool, Inspirations and Masteries), and shows you every change before you say yes.
+[*][b]Add, remove and level up powers[/b], including tools and hero-only powers
+[*]Set [b]Scrap[/b], [b]Lucky Dice[/b] and [b]Splinter's Revives[/b], and [b]heal to full[/b]
+[/list]
+
+[size=4][b]Upgrades and artifacts[/b][/size]
+[list]
+[*]Every shop upgrade (Combat, Turtles, Fortune, Inspirations), with a [b]Max this tab[/b] button
+[*][b]Artifacts:[/b] click an artifact, then click a level bar. A higher bar levels it up, a lower bar levels it down, and a locked artifact unlocks at whatever level you click. You can also pick which one is equipped.
+[*]Content the game ships but doesn't use is hidden, so you don't break anything by accident (you can show it if you want)
+[/list]
+
+[size=4][b]Game files[/b] [color=#E8A33C](advanced)[/color][/size]
+[list]
+[*]Change every hero's [b]base HP, move speed, body size[/b] and [b]dash cooldown[/b]
+[*]Change the numbers on [b]powers[/b], level by level
+[*]This edits the game itself (not your save), so Mutagen shows a big warning first. It always keeps a checked backup, and [b]Restore original files[/b] puts back the exact original.
+[*]Works with my [b]Playable Karai & Shredder[/b] mod: their rows show up when it's installed.
+[/list]
+
+[line]
+
+[size=5][b]How to use it[/b][/size]
+[list=1]
+[*][b]Close the game.[/b] (It saves every few seconds and would undo your changes.)
+[*]Download and unzip [b]Mutagen.exe[/b] anywhere you like. There's nothing to install. (Want a Start menu shortcut? Grab the installer from the Optional files instead.)
+[*]Double-click [b]Mutagen.exe[/b]. It finds your save and your game folder by itself.
+[*]Change what you want, then click [b]Save changes[/b].
+[*]A popup lists every safety check it ran. All green means you're done. Start the game!
+[/list]
+[b]Blue "Windows protected your PC" box?[/b] Click [b]More info[/b], then [b]Run anyway[/b]. It shows up because the app isn't code-signed (that costs money). The full source code is public on GitHub ([url=https://github.com/AnimaTheAeon/Mutagen]AnimaTheAeon/Mutagen[/url]), so anyone can check it.
+
+[line]
+
+[size=5][b]Is it safe?[/b][/size]
+Mutagen is very careful with your save:
+[list]
+[*]It [b]won't save while the game is running[/b].
+[*]It checks the save's own checksum before touching anything.
+[*]If the game saved after you opened Mutagen, it [b]stops[/b] instead of overwriting newer progress.
+[*]It compares the new save to the old one and makes sure [b]only what you edited[/b] changed.
+[*]It makes a [b]backup[/b] first and checks it. The last 25 backups are kept in [i]%LOCALAPPDATA%\Mutagen\backups[/i], and you can restore any of them from [b]Backups & safety[/b] with one click.
+[*]It writes to a temporary copy, reads it back, swaps it in, then checks it again. If anything fails, your original goes back automatically.
+[/list]
+
+[line]
+
+[size=5][b]Good to know[/b][/size]
+[list]
+[*][b]PC, Steam version only.[/b] Windows 10 or 11 (it uses WebView2, which comes with Windows).
+[*][b]Single player.[/b] Don't edit right before playing online co-op with other people.
+[*][b]Steam Cloud is fine.[/b] Just close the game before editing and let Steam sync.
+[*][b]Health upgrades[/b] you change mid-run kick in on your next run (the game sets max HP when a run starts).
+[*][b]Game updates:[/b] save editing should keep working after small game updates. If an update changes the save format, Mutagen refuses to write instead of guessing. The Game files page only patches game versions it knows, and won't touch anything else.
+[*][b]Uninstall:[/b] delete Mutagen.exe. To remove its backups and settings too, delete [i]%LOCALAPPDATA%\Mutagen[/i].
+[/list]
+
+[size=5][b]Found a bug?[/b][/size]
+Tell me in the [b]Bugs[/b] tab. If a save ever won't open, Mutagen will offer to restore one of its backups.
+
+[line]
+
+[size=5][b]Thanks[/b][/size]
+TMNT: Splintered Fate is by Super Evil Megacorp. Mutagen doesn't include any game files or art: the icons you see in the app are read from [b]your own[/b] game folder.
+Fan-made tool, not affiliated with Super Evil Megacorp, Paramount or Nickelodeon.
+
+[center][size=4]Have fun! If Mutagen saved you some grinding, hit [b]Endorse[/b]. It really helps.[/size][/center]

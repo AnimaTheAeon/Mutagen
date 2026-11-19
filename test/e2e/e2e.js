@@ -11,7 +11,7 @@ function freshEnv(src, game = '/home/claude/fakegame2') {
 const FILE = () => ENV + '/saves/saveSlot.GameState0.cloud.json';
 const VIEW = () => ed.view(sf.decode(fs.readFileSync(FILE())).doc);
 const results = [];
-async function t(name, fn) { try { await fn(); results.push(1); console.log('PASS', name); } catch (e) { results.push(0); console.log('FAIL', name, '\n   ', (e.stack || String(e)).split('\n').slice(0, 3).join('\n    ')); } }
+async function t(name, fn) { try { await fn(); results.push(1); console.log('PASS', name); } catch (e) { results.push(0); console.log('FAIL', name, '\n   ', (e.stack || String(e)).split('\n').filter(l => /e2e.js|lib.js|Error/.test(l)).slice(0, 6).join('\n    '), e.message.slice(0, 300)); } }
 const sha = (p) => crypto.createHash('sha1').update(fs.readFileSync(p)).digest('hex').toUpperCase();
 
 (async () => {
@@ -114,7 +114,11 @@ const sha = (p) => crypto.createHash('sha1').update(fs.readFileSync(p)).digest('
   p = await launch(freshEnv('/home/claude/fixtures_norun', G));
   await t('game files: warning, edit Slash HP + speed, apply, verify, restore exact original', async () => {
     await p.click('[data-act="page"][data-id="game"]');
-    await p.waitFor('#w-t'); await p.click('input[data-in="warnAck"]'); await p.click('#warn-go');
+    await p.waitFor('#w-t'); await p.click('input[data-in="warnAck"]');
+    // regression: the game values finish loading AFTER the tick and redraw the page; the tick must survive
+    await p.d.wait(async () => p.js("return !!document.querySelector('input[data-in=gfHero]')"), 60000); await p.sleep(500);
+    assert.ok(await p.js("return document.querySelector('input[data-in=warnAck]').checked && !document.querySelector('#warn-go').disabled"), 'tick was lost when values loaded');
+    await p.click('#warn-go');
     await p.waitFor('input[data-in="gfHero"]', 60000);
     await p.fill('input[data-in="gfHero"][data-k="Slash"][data-f="baseHp"]', 175);
     await p.fill('input[data-in="gfHero"][data-k="Slash"][data-f="speed"]', 5);

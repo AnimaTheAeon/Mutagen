@@ -1,5 +1,9 @@
 **Download `Mutagen.exe`** (portable: just run it) or the `Mutagen_…_x64-setup.exe` installer.
 
+**1.1.2**
+- The version number now shows in the title bar and next to the Mutagen logo, so you can see which version you have
+- Fixed: on the Game files warning, ticking "I understand" could untick itself if the game data finished loading a moment later
+
 **1.1.1**
 - New app icon: the battle-worn shell with the four bandanas (exe, taskbar, installer and sidebar)
 

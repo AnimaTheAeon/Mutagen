@@ -38,6 +38,11 @@
 
   // ---------- helpers ----------
   // number box with app-styled up/down arrows (replaces the browser's white spinner)
+  function showVersion(v) {
+    if (!v || S.init.error) return;
+    const el = $('#app-version'); if (el) { el.textContent = 'v' + v; el.hidden = false; }
+    document.title = `Mutagen v${v}`;
+  }
   function spin(inputHtml, kind, key, name) {
     return `<div class="spin">${inputHtml}<div class="spin-btns"><button type="button" tabindex="-1" aria-label="Increase ${esc(name)}" data-act="nstep" data-kind="${kind}" data-key="${esc(key)}" data-d="1">${svg('up', 14, 'currentColor', 2.5)}</button><button type="button" tabindex="-1" aria-label="Decrease ${esc(name)}" data-act="nstep" data-kind="${kind}" data-key="${esc(key)}" data-d="-1">${svg('down', 14, 'currentColor', 2.5)}</button></div></div>`;
   }
@@ -414,8 +419,8 @@
         <span class="bul">problems in co-op if other players don't have the same files</span><span class="bul">conflicts with other mods (your Karai + Shredder mod is detected and kept)</span>
         <div class="protect"><b style="color:var(--text)">How you're protected</b><span>A full backup is made and checked (SHA1) first. If anything fails, the original goes back automatically.</span><span>"Restore original files" undoes everything. Steam "Verify integrity" also resets these files, along with your other mods.</span></div>
         ${apply ? `<div class="protect"><b style="color:var(--text)">This patch</b>${gfSummary()}</div>` : ''}
-        <label class="check" style="color:var(--text);font-weight:600;min-height:44px"><input type="checkbox" data-in="warnAck" style="accent-color:#F5B04A">I understand this changes the game's files and could make the game unstable.</label></div>
-      <div class="dfoot"><button class="btn" data-act="warnBack">${apply ? 'Cancel' : 'Back to save editing'}</button><button class="btn warn" data-act="${apply ? 'gfApplyGo' : 'warnGo'}" id="warn-go" disabled>${apply ? 'Back up &amp; apply patch' : 'I understand, continue'}</button></div></section></div>`;
+        <label class="check" style="color:var(--text);font-weight:600;min-height:44px"><input type="checkbox" data-in="warnAck" style="accent-color:#F5B04A" ${modal && modal.ack ? 'checked' : ''}>I understand this changes the game's files and could make the game unstable.</label></div>
+      <div class="dfoot"><button class="btn" data-act="warnBack">${apply ? 'Cancel' : 'Back to save editing'}</button><button class="btn warn" data-act="${apply ? 'gfApplyGo' : 'warnGo'}" id="warn-go" ${modal && modal.ack ? '' : 'disabled'}>${apply ? 'Back up &amp; apply patch' : 'I understand, continue'}</button></div></section></div>`;
   }
   function gfSummary() {
     const p = gfPending(); const lines = [];
@@ -604,7 +609,7 @@
       case 'res': { if (t.value === '' || !Number.isFinite(num) || num < 0) { toast('Enter a whole number 0 or more.'); render(); return; } const o = S.base.run.resources.find((x) => x.key === d.key); const v = Math.min(99999, Math.round(num)); await pushOp({ op: 'runResource', key: d.key, value: v }, { isOriginal: v === o.value }); break; }
       case 'swapOpt': S.swap[d.k] = t.checked; await refreshPlan(); render(); break;
       case 'showUnused': S.showUnused = t.checked; render(); break;
-      case 'warnAck': { const b = $('#warn-go'); if (b) b.disabled = !t.checked; break; }
+      case 'warnAck': { if (modal) modal.ack = t.checked; const b = $('#warn-go'); if (b) b.disabled = !t.checked; break; }
       case 'gfHero': {
         if (t.value === '' || !Number.isFinite(num)) { toast('Enter a number.'); render(); return; }
         const lim = S.gf.values.limits[d.f]; if (num < lim[0] || num > lim[1]) { toast(`Must be between ${lim[0]} and ${lim[1]}.`); render(); return; }
@@ -672,6 +677,7 @@
     mutagen.on('icons:ready', (m) => { S.icons = m || {}; render(); });
     mutagen.on('game:progress', (s) => { S.gf.log.push(s); if (modal && modal.type === 'busy') renderModal(); });
     S.init = await mutagen.init();
+    showVersion(S.init && S.init.version);
     if (S.init.error) { S.fatal = esc(S.init.error); render(); return; }
     S.catalog = await mutagen.catalog();
     const ic = await mutagen.icons(); if (ic.ready) S.icons = ic.icons;

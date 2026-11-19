@@ -16,7 +16,7 @@ function wrap(d) {
   const p = {
     d,
     $, $$: (css) => d.findElements(By.css(css)),
-    async click(css, tries = 4) { try { const e = await d.wait(until.elementLocated(By.css(css)), 15000); await d.executeScript('arguments[0].scrollIntoView({block:"center"})', e); await e.click(); await p.sleep(150); } catch (e) { if (tries > 0 && /Stale/.test(e.name + e.message)) { await p.sleep(400); return p.click(css, tries - 1); } throw e; } },
+    async click(css, tries = 4) { try { const e = await d.wait(until.elementLocated(By.css(css)), 15000); await d.executeScript('arguments[0].scrollIntoView({block:"center"})', e); await e.click(); await p.sleep(150); } catch (e) { if (tries > 0 && /Stale/.test(e.name + e.message)) { await p.sleep(400); return p.click(css, tries - 1); } if (/Intercept/.test(e.name)) console.log('   intercepted click on', css, '::', await d.executeScript("const b=document.querySelector(arguments[0]);const r=b.getBoundingClientRect();const t=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return JSON.stringify({rect:[r.x,r.y,r.width,r.height],top:t&&t.outerHTML.slice(0,200),toast:(document.querySelector('#toast')||{}).outerHTML, vh:innerHeight})", css)); throw e; } },
     async fill(css, v, tries = 4) { try { return await p.fill1(css, v); } catch (e) { if (tries > 0 && /Stale/.test(e.name + e.message)) { await p.sleep(500); return p.fill(css, v, tries - 1); } throw e; } },
     async fill1(css, v) { const e = await $(css); await d.executeScript('arguments[0].scrollIntoView({block:"center"});arguments[0].focus();arguments[0].select()', e); await e.sendKeys(String(v), Key.TAB); await p.sleep(300); },
     val: (css) => d.executeScript('return document.querySelector(arguments[0]).value', css),

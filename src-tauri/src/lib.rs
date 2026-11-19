@@ -42,6 +42,10 @@ pub fn run() {
             let icons = std::path::Path::new(&sys::data_dir()).join("icons");
             let _ = std::fs::create_dir_all(&icons);
             let _ = app.asset_protocol_scope().allow_directory(&icons, true);
+            // show the version in the title bar so users can tell which build they have
+            if let Some(w) = app.get_webview_window("main") {
+                let _ = w.set_title(&format!("Mutagen v{}", app.package_info().version));
+            }
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![io, choose_folder, open_path])

@@ -214,3 +214,5 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
 .hero.dragging { opacity: .4; }
 @media (max-width: 900px) { .swaprow { flex-direction: column; } .dropzone { flex-basis: auto; } }
 .hm label { flex: 0 0 66px; }
+.brand-name .ver { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 999px; background: #1C2618; border: 1px solid #2E3A2A; color: #A8E07A; font: 700 11px var(--font); letter-spacing: .3px; vertical-align: 3px; }
+.brand-name .ver[hidden] { display: none; }
